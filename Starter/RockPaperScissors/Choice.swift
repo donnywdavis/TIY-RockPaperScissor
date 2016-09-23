@@ -14,6 +14,7 @@ enum Choice: Int {
     case Scissors
     
     var image: UIImage {
+        // Return the appropriate image based on the choice that is selected
         switch self {
         case .Rock:
             return #imageLiteral(resourceName: "rock")
@@ -25,13 +26,12 @@ enum Choice: Int {
     }
     
     static func random() -> Choice {
-        let randomIndex = Int(arc4random_uniform(2))
-        guard let choice = Choice(rawValue: randomIndex) else {
-            return Choice(rawValue: 0)!
-        }
+        // Get a random choice to simulate the computers pick
         return choice
     }
     
+    // Compare the choice that is selected with an opponents choice to determine 
+    // who wins
     func compare(withOpponentsChoice opponentsChoice: Choice) -> Bool? {
         switch (self, opponentsChoice) {
         case (.Rock, .Paper):
